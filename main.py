@@ -5,7 +5,7 @@ from send_email import send_info
 
 # Define the ScraperAPI request payload
 def check_product_availability(product_url, recipient_email):
-    api_key = '693020c26c7156542c1600e28dfedb35'
+    api_key = 'ff66fb14fa09f0e634e916608b107d60'
     scraperapi_endpoint = 'https://api.scraperapi.com/'
 
     payload = {
@@ -75,7 +75,7 @@ recipient_email = input("Enter your email address: ")
 
 # Check if the user wants to automate availability checking and receive notifications
 automate_checking = input("Automate availability checking and receive email notifications? (yes/no): ").lower()
-if automate_checking == "yes" or automate_checking == "Yes" or  automate_checking == "YES":
+if automate_checking == "yes" or automate_checking == "Yes" or  automate_checking == "YES" or automate_checking == "Y" or automate_checking == "y":
     check_product_availability(product_url, recipient_email)
 else:
     print("You chose not to automate availability checking.")
