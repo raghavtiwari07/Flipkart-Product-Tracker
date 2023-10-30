@@ -3,9 +3,10 @@ from bs4 import BeautifulSoup
 import time
 from send_email import send_info
 
+
 # Define the ScraperAPI request payload
 def check_product_availability(product_url, recipient_email):
-    api_key = '693020c26c7156542c1600e28dfedb35'
+    api_key = '60e9aa2593d78b9a3cf0f0eb0de398a8'
     scraperapi_endpoint = 'https://api.scraperapi.com/'
 
     payload = {
@@ -41,7 +42,7 @@ def check_product_availability(product_url, recipient_email):
                 break
             else:
                 print("Product is currently out of stock. Checking again in 2 seconds...")
-                time.sleep(1)  # Wait for 1 seconds before checking again
+                 # Wait for 1 seconds before checking again
         else:
             print(f"Failed to fetch data. Status code: {response.status_code}")
             break
@@ -70,12 +71,53 @@ def get_product_reviews(soup):
     else:
         return "Reviews not available"
 
-product_url = input("Enter the Flipkart product URL: ")
-recipient_email = input("Enter your email address: ")
 
-# Check if the user wants to automate availability checking and receive notifications
-automate_checking = input("Automate availability checking and receive email notifications? (yes/no): ").lower()
-if automate_checking == "yes" or automate_checking == "Yes" or  automate_checking == "YES":
-    check_product_availability(product_url, recipient_email)
-else:
-    print("You chose not to automate availability checking.")
+# # Check if the user wants to automate availability checking and receive notifications
+# automate_checking = input("Automate availability checking and receive email notifications? (yes/no): ").lower()
+# if automate_checking == "yes" or automate_checking == "Yes" or  automate_checking == "YES" or automate_checking == "Y" or automate_checking == "y":
+#     check_product_availability(product_url, recipient_email)
+# else:
+#     print("You chose not to automate availability checking.")
+
+
+
+
+
+
+# import requests
+# from bs4 import BeautifulSoup
+# import time
+
+# def check_product_availability(product_url):
+#     # Define the API key and ScraperAPI endpoint
+#     api_key = '693020c26c7156542c1600e28dfedb35'
+#     scraperapi_endpoint = 'https://api.scraperapi.com/'
+
+#     # Define the ScraperAPI request payload
+#     payload = {
+#         'api_key': api_key,
+#         'url': product_url,
+#         'follow_redirect': True,
+#         'render': True,
+#         'retry_404': True,
+#         'autoparse': True
+#     }
+
+#     while True:
+#         # Make the API request
+#         response = requests.get(scraperapi_endpoint, params=payload)
+
+#         if response.status_code == 200:
+#             # Parse the HTML content
+#             soup = BeautifulSoup(response.text, 'html.parser')
+
+#             # Check if the product is available based on the presence of a "Buy Now" button
+#             buy_now_button = soup.find('button', {'class': '_2KpZ6l _2U9uOA _3v1-ww'})
+
+#             if buy_now_button:
+#                 return "Product is available."
+#             else:
+#                 return "Product is currently out of stock."
+#                 time.sleep(2)  # Wait for 2 seconds before checking again
+#         else:
+#             return f"Failed to fetch data. Status code: {response.status_code}"
