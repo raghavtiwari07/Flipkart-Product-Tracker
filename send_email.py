@@ -4,8 +4,8 @@ from email.mime.text import MIMEText
 
 def send_info(product_name, product_price, product_ratings, product_reviews, recipient_email,product_link):
     # Email configuration
-    sender_email = 'notificationapp27@gmail.com'  # Your Gmail email address
-    sender_password = 'oevoyeyewlgpjgoz' # Your Gmail password
+    sender_email = 'myfakeaccoun625262@gmail.com'  # Your Gmail email address
+    sender_password = 'yxyk pctc hrjo otaz' # Your Gmail password
     smtp_server = 'smtp.gmail.com'
     smtp_port = 587
 
@@ -27,3 +27,4 @@ def send_info(product_name, product_price, product_ratings, product_reviews, rec
     # Send the email
     server.sendmail(sender_email, recipient_email, msg.as_string())
     server.quit()
+# send_info("product_name", "product_price", "product_ratings", "product_reviews", "raghavtiwari561@gmail.com","product_link")
